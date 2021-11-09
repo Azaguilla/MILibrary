@@ -1,6 +1,6 @@
 <?php
 
-require ("DataBase.php");
+require_once ("DataBase.php");
 
 /**
  * Classe ProcessGoogleBooksAPIMetadata
@@ -22,7 +22,7 @@ class ProcessGoogleBooksAPIMetadata
         $this->book_metadata_requested = $book_info_requested;
     }
 
-    public function get_book_metadata()
+    public function get_books_metadata()
     {
         $q = urlencode($this->book_metadata_requested);
         $endpoint = 'https://www.googleapis.com/books/v1/volumes?q=' . $q . '&key=' . $this->api_key;
@@ -55,12 +55,14 @@ class ProcessGoogleBooksAPIMetadata
         }
     }
 
+    /** Fonction save_books_info_in_db.
+     *
+     * Cette fonction enregistre dans la base de données tous les livres retournés par la recherche effectuée par
+     * l'utilisateur.
+     *
+     * @throws Exception
+     */
     public function save_books_info_in_db()
-        /**
-         * Cette fonction enregistre dans la base de données tous les livres retournés par la recherche effectuée par
-         * l'utilisateur.
-         *
-         */
     {
         $books_metadata = json_decode($this->retrieved_book_metadata, $assoc = true);
         $db = new DataBase();
@@ -106,7 +108,8 @@ class ProcessGoogleBooksAPIMetadata
                 array_push($books_requests, "('" . $isbn . "','" . $title . "','" . $authors . "','" . $publisher . "','" . $publication_date . "','" . $synopsis . "','1')");
             }
         }
-        var_dump($books_requests);
+        //var_dump($books_requests);
+
         #Le tableau de valeur peut être vide si la personne refait la même recherche (on essaie alors d'enregistrer des livres dont on a déjà les infos),
         # on ne fait la requête que si le tableau n'est pas vide
         if (!empty($books_requests)){
@@ -116,10 +119,12 @@ class ProcessGoogleBooksAPIMetadata
         }
     }
 
+    /**
+     * Cette fonction enregistre dans la base de données le livre sélectionné par l'utilisateur.
+     *
+     * @param $book_isbn
+     */
     public function save_book_info_in_db($book_isbn)
-        /**
-         * Cette fonction enregistre dans la base de données le livre sélectionné par l'utilisateur.
-         */
     {
 
     }
