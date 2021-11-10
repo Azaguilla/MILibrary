@@ -1,9 +1,11 @@
 <?php
 require ('ProcessGoogleBooksAPIMetadata.php');
 require ('BookMetadataProcess.php');
+require ('Library.php');
 
 $book_metadata_request = new ProcessGoogleBooksAPIMetadata("légende");
 $process_book_data = new BookMetadataProcess(9782330024215);
+$library = new Library();
 try {
     # Faire la recherche
     $books_metadata = $book_metadata_request->get_books_metadata();
@@ -18,6 +20,9 @@ try {
 
     # Ajouter le livre à la bibliothèque de l'utilisateur
     var_dump($process_book_data->add_book_to_user_objects(1));
+
+    # Afficher la bibliothèque de l'utilisateur
+    var_dump($library->get_books_metadata(1));
 
     # Afficher les métadonnées du livre lorsqu'il est dans la bibliothèque de l'utilisateur
     var_dump($process_book_data->get_user_book_metadata_from_db(1));
