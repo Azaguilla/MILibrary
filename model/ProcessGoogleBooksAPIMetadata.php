@@ -22,6 +22,13 @@ class ProcessGoogleBooksAPIMetadata
         $this->book_metadata_requested = $book_info_requested;
     }
 
+    /**
+     * Fonction get_books_metadata
+     *
+     * Se connecte à Google Books API et réstitue les résultats de la recherche réalisée par l'utilisateur.
+     *
+     * @return bool|string
+     */
     public function get_books_metadata()
     {
         $q = urlencode($this->book_metadata_requested);
@@ -81,7 +88,7 @@ class ProcessGoogleBooksAPIMetadata
             if (!isset($isbn)) {
                 $isbn = $book["volumeInfo"]["industryIdentifiers"][0]["identifier"];
             }
-            #Vérifier que le livre n'est pas déjà présent dans la base, si non faire la stranscription et sauver le morceau de requête
+            #Vérifier que le livre n'est pas déjà présent dans la base, si non faire la transcription et sauver le morceau de requête
             $isbn_in_db = $db->getData("SELECT field1 FROM `object` WHERE `field1` = '" . $isbn . "'", "milibrary", "root", "");
             if (empty($isbn_in_db)) {
                 $title = addslashes($book["volumeInfo"]["title"]);
@@ -114,18 +121,7 @@ class ProcessGoogleBooksAPIMetadata
         # on ne fait la requête que si le tableau n'est pas vide
         if (!empty($books_requests)){
             $request = $request.implode(",", $books_requests);
-            //echo $request;
             $db->addOrDelData($request, "milibrary", "root", "");
         }
-    }
-
-    /**
-     * Cette fonction enregistre dans la base de données le livre sélectionné par l'utilisateur.
-     *
-     * @param $book_isbn
-     */
-    public function save_book_info_in_db($book_isbn)
-    {
-
     }
 }

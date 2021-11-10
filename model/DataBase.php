@@ -16,10 +16,14 @@ class DataBase {
      *
      * Cette fonction permet la connexion à la base de données.
      *
+     * @param $db_name String
+     * @param $password String
+     * @param $user_name String
      * @return PDO
      * @throws Exception
      */
-    private static function connection($db_name, $user_name, $password){
+    private static function connection(String $db_name, String $user_name, String $password): PDO
+    {
         if($db = new PDO('mysql:host=localhost;dbname='.$db_name, $user_name, $password, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'))){
             return $db;
         } else {
@@ -32,11 +36,15 @@ class DataBase {
      *
      * Cette fonction se connecte à une base de données, exécute la requête passée en paramètre et retourne un tableau des éléments ainsi sélectionnés.
      *
-     * @param string $request Une requête SQL
+     * @param $request String Une requête SQL
+     * @param $db_name String
+     * @param $password String
+     * @param $user_name String
      * @return array
      * @throws Exception
      */
-    public function getData($request, $db_name, $user_name, $password){
+    public function getData(String $request, String $db_name, String $user_name, String $password): array
+    {
         #Connexion à la base de données
         $db = self::connection($db_name, $user_name, $password);
         #Requêter la base
@@ -57,18 +65,22 @@ class DataBase {
      *
      * Cette fonction se connecte à la base de donnée, exécute la requête passé en paramètre et retourne le nombre de lignes affectées par la requête
      *
-     * @param string $request La requête SQL
+     * @param $request String La requête SQL
+     * @param $db_name String
+     * @param $password String
+     * @param $user_name String
      * @return false|int
      * @throws Exception
      */
-    public function addOrDelData($request, $db_name, $user_name, $password){
+    public function addOrDelData(String $request, String $db_name, String $user_name, String $password)
+    {
         #Connexion à la base de données
         $db = self::connection($db_name, $user_name, $password);
         #Requêter la base
         if ($nbLineAffected = $db->exec($request)){
             return $nbLineAffected;
         } else {
-            throw new Exception('Impossible de récupérer les données.');
+            throw new Exception('Impossible de modifier les données.');
         }
     }
 }
