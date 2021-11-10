@@ -105,5 +105,6 @@ class BookMetadataProcess
         $db = new DataBase();
         $request = 'UPDATE `user_object` SET `comment` = "'.$new_comment.'", `rate` = '.$new_rate.' WHERE `id_user_owner` = '.$id_user_owner.' AND `id_object` = '.$this->book_id;
         $db->addOrDelData($request, "milibrary", "root", "");
+        return "Informations modifiées";
     }
 }
