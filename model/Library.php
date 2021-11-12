@@ -1,6 +1,14 @@
 <?php
 
-
+/**
+ * Class Library
+ *
+ * Cette classe permet de faire toutes les actions concernant la bibliothèque de l'utilisateur.
+ *
+ * PHP version 7.4
+ *
+ * @author Célia Martin <celia.ma@free.fr>
+ */
 class Library
 {
     public function __construct(){

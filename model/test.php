@@ -2,11 +2,32 @@
 require ('ProcessGoogleBooksAPIMetadata.php');
 require ('BookMetadataProcess.php');
 require ('Library.php');
+require ('User.php');
 
 $book_metadata_request = new ProcessGoogleBooksAPIMetadata("légende");
 $process_book_data = new BookMetadataProcess(9782330024215);
 $library = new Library();
 try {
+    ### Utilisateurs
+    # Connexion
+    $users = new User("test@rouge.fr", "password");
+    $response  = $users->verify_user();
+    var_dump($response);
+
+    # Afficher les utilisateurs
+    //var_dump($users->get_users_infos());
+
+    # Ajouter un ami
+    var_dump($users->add_friend(3));
+
+    # Supprimer un ami
+    //var_dump($users->del_friend(3));
+
+    #Afficher les amis
+    var_dump($users->get_friends_infos());
+
+
+    ### Livres
     # Faire la recherche
     $books_metadata = $book_metadata_request->get_books_metadata();
     var_dump($books_metadata);
