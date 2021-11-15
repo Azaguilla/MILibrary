@@ -101,7 +101,8 @@ class BookMetadataProcess
      * @param $new_comment String Commentaire à propos du livre (facultatif)
      * @throws Exception
      */
-    public function update_comment_and_rate(int $id_user_owner, int $new_rate, String $new_comment){
+    public function update_comment_and_rate(int $id_user_owner, int $new_rate, String $new_comment): string
+    {
         $db = new DataBase();
         $request = 'UPDATE `user_object` SET `comment` = "'.$new_comment.'", `rate` = '.$new_rate.' WHERE `id_user_owner` = '.$id_user_owner.' AND `id_object` = '.$this->book_id;
         $db->addOrDelData($request, "milibrary", "root", "");

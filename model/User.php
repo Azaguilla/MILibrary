@@ -13,8 +13,8 @@ require_once "DataBase.php";
  */
 class User
 {
-    private $email;
-    private $psw;
+    protected $email;
+    protected $psw;
 
     /**
      * Constructeur de User.
@@ -80,50 +80,5 @@ class User
         return $db->getData($request, "milibrary", "root", "");
     }
 
-    /**
-     * Fonction get_friends_infos.
-     *
-     * Retourne la liste des amis de l'utilisateurs (sans leur mot de passe).
-     *
-     * @return array
-     * @throws Exception
-     */
-    public function get_friends_infos(): array
-    {
-        $db = new DataBase();
-        $request = 'SELECT `id`, `username`, `firstname`, `lastname`, `email`, `avatar`, `description` FROM `friend` JOIN `user` ON friend.id_user2 = user.id WHERE `id_user1` = (SELECT `id` FROM `user` WHERE `email` = "'. $this->email.'")';
-        return $db->getData($request, "milibrary", "root", "");
-    }
 
-    /**
-     * Fonction add_friend.
-     *
-     * Cette fonction permet d'ajouter un utilisateur parmi ses amis.
-     *
-     * @param $friend_id int Identifiant de l'utilisateur à ajouter.
-     * @return false|int
-     * @throws Exception
-     */
-    public function add_friend(int $friend_id){
-        $db = new DataBase();
-        $request = 'INSERT INTO `friend` (`id_user1`, `id_user2`) VALUES ((SELECT `id` FROM `user` WHERE `email` = "'.$this->email.'"), '.$friend_id.'), ('.$friend_id.', (SELECT `id` FROM `user` WHERE `email` = "'.$this->email.'"))';
-
-        var_dump($request);
-        return $db->addOrDelData($request, "milibrary", "root", "");
-    }
-
-    /**
-     * Fonction del_friend.
-     *
-     * Cette fonction permet de supprimer un utilisateur de ses amis.
-     *
-     * @param $friend_id int Identifiant de l'utilisateur à supprimer.
-     * @return false|int
-     * @throws Exception
-     */
-    public function del_friend(int $friend_id){
-        $db = new DataBase();
-        $request = 'DELETE FROM `friend` WHERE `id_user1` = (SELECT `id` FROM `user` WHERE `email` = "'.$this->email.'") AND `id_user2` = '.$friend_id.';DELETE FROM `friend` WHERE `id_user2` = (SELECT `id` FROM `user` WHERE `email` = "'.$this->email.'") AND `id_user1` = '.$friend_id.';';
-        return $db->addOrDelData($request, "milibrary", "root", "");
-    }
 }
