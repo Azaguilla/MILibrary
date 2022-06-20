@@ -1,0 +1,51 @@
+h2{
+    font : 30px Pacifico;
+}
+
+.text-font{
+    font : 18px OpenSansRegular;
+}
+
+div#home-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#deconnexion-button-div, #menu{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+nav{
+    margin-top: 35px;
+}
+
+button{
+    margin-top:15px;
+}
+
+.menu-button {
+    background-color: white;
+    height: 50px;
+    width: 375px;
+    border-color: rgb(228 221 221);
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 1px 1px 1px 0 #a9a9a9;
+    text-align: left;
+}
+
+#deconnexion-button-div{
+    margin-top: 50px;
+}
+
+.deconnexion-button{
+    background-color: rgb(117 11 193 / 98%);
+    height: 40px;
+    width: 375px;
+    border-color: rgb(117 11 193 / 98%);
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 1px 1px 1px 0 rgb(117 11 193 / 98%);
+    color: white;
+}
