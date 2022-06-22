@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   faHandshake = faHandshake;
   faPeopleGroup = faPeopleGroup;
 
-
   constructor() { }
 
   ngOnInit(): void {
