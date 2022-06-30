@@ -3,10 +3,10 @@
     <article class= "text-font">Gérez votre bibliothèque et consultez celle de vos amis.</article>
     <nav>
         <div id = "menu">
-            <button class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faBook"></fa-icon>-->Ma bibliothèque</button>
-            <button class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faHeart"></fa-icon>-->Ma liste d'envies</button>
-            <button class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faHandshake"></fa-icon>-->Mes livres en vente</button>
-            <button class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faPeopleGroup"></fa-icon>-->Mes amis</button>
+            <button (click)="onMyLibrary()" class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faBook"></fa-icon>-->Ma bibliothèque</button>
+            <button (click)="onMyWishlist()" class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faHeart"></fa-icon>-->Ma liste d'envies</button>
+            <button (click)="onBookToSend()" class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faHandshake"></fa-icon>-->Mes livres en vente</button>
+            <button (click)="onMyFriendsC()" class= "menu-button text-font"><!--<fa-icon class="menu-icons" [icon]="faPeopleGroup"></fa-icon>-->Mes amis</button>
             </div>
         <div id = "deconnexion-button-div">
             <button class = "deconnexion-button text-font">Se déconnecter</button>

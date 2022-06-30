@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { faHeart, faBook, faHandshake, faPeopleGroup } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -12,9 +13,25 @@ export class HomeComponent implements OnInit {
   faHandshake = faHandshake;
   faPeopleGroup = faPeopleGroup;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
+
+  onMyLibrary() {
+    this.router.navigateByUrl('Ma Bibliothèque');
+}
+
+  onMyWishlist() {
+  this.router.navigateByUrl('Ma liste d\'envies');
+}
+
+  onBookToSend() {
+  this.router.navigateByUrl('Mes livres en vente');
+}
+
+  onMyFriendsC() {
+  this.router.navigateByUrl('Mes amis');
+}
 
 }
