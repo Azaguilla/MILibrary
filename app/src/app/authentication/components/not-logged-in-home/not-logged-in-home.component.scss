@@ -1,0 +1,53 @@
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100%;
+}
+
+h1 {
+    font : 2em Pacifico;
+    margin-top: 20%;
+    color: #555555;
+}
+
+p {
+    font : 1em OpenSansLight;
+    margin: 0em 0em 8em;
+    color: #555555;
+    width: 90%;
+    text-align: center;
+}
+
+.btn {
+    font : 1em OpenSansRegular;
+    padding: 0.6em 0em;
+    margin: 1em 0em;
+    width: 90%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.btn-default {
+    background-color: rgb(117 11 193 / 98%);
+    color: white;
+}
+
+.btn-default-2 {
+    background-color: #d9a04a;
+    color: white;
+}
+
+@media (min-width: 1200px) {
+    h1 {
+        font : 3em Pacifico;
+        margin-top: 5%;
+    }
+
+    .btn {
+        width: 20%;
+    }
+}
