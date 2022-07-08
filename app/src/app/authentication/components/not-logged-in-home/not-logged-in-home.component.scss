@@ -21,6 +21,8 @@ p {
     text-align: center;
 }
 
+/**** BUTTON ****/
+
 .btn {
     font : 1em OpenSansRegular;
     padding: 0.6em 0em;
@@ -40,6 +42,8 @@ p {
     background-color: #d9a04a;
     color: white;
 }
+
+/**** MEDIA QUERIES ****/
 
 @media (min-width: 1200px) {
     h1 {
